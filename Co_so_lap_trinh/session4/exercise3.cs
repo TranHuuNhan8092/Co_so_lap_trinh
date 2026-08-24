@@ -6,7 +6,7 @@ namespace Co_so_lap_trinh.session4
 {
     internal class exercise3
     {
-        public static void Main(string[] args)
+        public static void Main3_4(string[] args)
         {
            
 
