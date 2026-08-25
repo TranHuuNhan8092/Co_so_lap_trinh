@@ -550,6 +550,7 @@ LƯƠNG NET THỰC NHẬN: 21,927,500 VNĐ*/
             Console.ReadKey();
         }
 
+        //Bài 11 tính sai
         static void Bai11() {
             Console.InputEncoding = Encoding.UTF8;
             Console.OutputEncoding = Encoding.UTF8;
@@ -704,7 +705,8 @@ Lợi nhuận chênh lệch: 948,220 VNĐ (Lãi kép tối ưu hơn)*/
             Console.WriteLine($"Văn bản Giải mã: {decode}");
             Console.ReadKey();
         }
-
+        
+        
         static void Bai13()
         {
             /*Tình huống thực tế: Hệ thống thẻ từ bãi đỗ xe thông minh tự động ghi nhận thời điểm xe vào và xe ra để
@@ -801,9 +803,6 @@ TỔNG PHÍ ĐỖ XE: 60,000 VNĐ
 
             Console.ReadKey();
         }
-
-
-
 
         //Bài 14 chưa hiểu phép tính trong check;
         static void Bai14()
