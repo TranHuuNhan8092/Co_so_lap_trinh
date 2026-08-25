@@ -11,21 +11,21 @@ namespace Co_so_lap_trinh.session3
 {
     internal class baiTapNop
     {
-        enum tyGia
-        {
-            USD = 25400,
-            Euro = 27200,
-            JPY = 165,
-            GBP = 32100
-        };    
-        public static void oldMain(string[] args)
+      
+        public static void Main(string[] args)
         {
             Console.InputEncoding = Encoding.UTF8;
             Console.OutputEncoding = Encoding.UTF8;
 
-          
-        }
 
+        }
+    
+
+           
+           
+        
+
+        
 
 
 
@@ -206,26 +206,27 @@ Số tiền USD nhận được: 391.73 USD*/
             decimal soTienTinhDoi = soTien - phiDichVu;
             decimal soTienNgoaiTe = 0;
             string tenNgoaiTe = "";
+            int[] tyGiaCoDinh = { 25400, 27200, 165, 32100 };
             switch (chonNgoaiTe)
             {
                 case 1:
                     tenNgoaiTe = "USD";
-                    soTienNgoaiTe = soTienTinhDoi / (decimal)tyGia.USD;
+                    soTienNgoaiTe = soTienTinhDoi / tyGiaCoDinh[0];
                     break;
 
                 case 2:
                     tenNgoaiTe = "Euro";
-                    soTienNgoaiTe = soTienTinhDoi / (decimal)tyGia.Euro;
+                    soTienNgoaiTe = soTienTinhDoi / tyGiaCoDinh[1];
                     break;
 
                 case 3:
                     tenNgoaiTe = "JPY";
-                    soTienNgoaiTe = soTienTinhDoi / (decimal)tyGia.JPY;
+                    soTienNgoaiTe = soTienTinhDoi / tyGiaCoDinh[3];
                     break;
 
                 case 4:
                     tenNgoaiTe = "GBP";
-                    soTienNgoaiTe = soTienTinhDoi / (decimal)tyGia.GBP;
+                    soTienNgoaiTe = soTienTinhDoi / tyGiaCoDinh[4];
                     break;
             }
             Console.WriteLine($"Phí dịch vụ (0.5%): {phiDichVu:N0} VNĐ");
@@ -481,8 +482,6 @@ Chi phí mỗi người: 144,000 VNĐ
             Console.ReadKey();
         }
 
-        static void Bai8() { }
-
         static void Bai9()
         {
             /*Tình huống thực tế: Phòng kế toán cần phần mềm tự động tính tiền lương thực nhận (Net Salary) từ lương
@@ -515,12 +514,11 @@ LƯƠNG NET THỰC NHẬN: 21,927,500 VNĐ*/
             Console.OutputEncoding = Encoding.UTF8;
 
             //khai bao luong
-            Console.Write("Lương Gross: ");
-            string lgxau = Console.ReadLine();
-            int tachlg = lgxau.IndexOf(' ');
+            Console.Write("Lương Gross (VNĐ): ");
+            decimal gross = decimal.Parse(Console.ReadLine());
             Console.Write("Số người phụ thuộc: ");
             int soNguoi = int.Parse(Console.ReadLine());
-            decimal gross = decimal.Parse(lgxau.Substring(0, tachlg));
+            
 
             //
             decimal tongBaoHiem = 0.105m * gross;
@@ -551,6 +549,364 @@ LƯƠNG NET THỰC NHẬN: 21,927,500 VNĐ*/
 
             Console.ReadKey();
         }
+
+        static void Bai11() {
+            Console.InputEncoding = Encoding.UTF8;
+            Console.OutputEncoding = Encoding.UTF8;
+
+            //Nhap va tach tien gui
+            Console.Write("Số tiền gửi (VNĐ): ");
+            
+            decimal P = decimal.Parse(Console.ReadLine());
+
+            //Nhap va tach lai suat
+            Console.Write("Lãi suất năm (%/năm): ");
+
+            double r = double.Parse(Console.ReadLine());
+
+            //Nhap va tach ky han
+            Console.Write("Thời gian gửi (tháng): ");
+           
+            int n = int.Parse(Console.ReadLine());
+
+            //Lai don
+            decimal laiDon = P * (decimal)(r / 100) * (decimal)(n / 12.0);
+
+            //Lai kep
+
+            decimal x = 1 + (decimal)(r / 100) / 12;
+            decimal growthFactor = (decimal)Math.Pow((double)x, n);
+            decimal laiKep = P * growthFactor;
+
+
+            Console.WriteLine($"Tổng tiền lãi (Lãi đơn): {laiDon:N0} VNĐ");
+            Console.WriteLine($"Tổng tiền lãi (Lãi kép): {laiKep - P:N0}");
+
+
+            Console.WriteLine($"laiKep = {laiKep:N0}");
+            if (laiDon < laiKep - P)
+            {
+                Console.WriteLine($"Lợi nhuận chênh lệch: {laiKep - P - laiDon:N0} VNĐ (Lãi kép tối ưu hơn)");
+
+            }
+            else { Console.WriteLine($"Lợi nhuận chênh lệch: {laiDon - (laiKep - P):N0} VNĐ (Lãi đơn tối ưu hơn)"); }
+
+
+            Console.ReadKey();
+        }
+
+        static void Bai12()
+        {
+            /*Tình huống thực tế: Khách hàng muốn gửi tiết kiệm tại ngân hàng. Chương trình cần hỗ trợ tính toán tổng
+số tiền cả gốc lẫn lãi thu được sau kỳ hạn gửi theo 2 phương thức: Lãi đơn và Lãi kép.
+Kiến thức trọng tâm: Kiểu decimal, double, Math.Pow(), ép kiểu giữa decimal và double, định dạng số.
+Yêu cầu bài toán:
+• Nhập Số tiền gửi ban đầu P (decimal - VNĐ).
+• Nhập Lãi suất năm r (%/năm - kiểu double, ví dụ 6.5%).
+• Nhập Kỳ hạn gửi n (tháng - kiểu int, ví dụ 12 tháng).
+• Tính Lãi Đơn (Simple Interest):
+• + Tiền lãi đơn = P * (r / 100) * (n / 12.0).
+• Tính Lãi Kép hàng tháng (Compound Interest):
+• + Tổng tiền lãi kép A = P * (1 + (r / 100) / 12) ^ n.
+• (Lưu ý: Công thức lũy thừa cần đổi P sang double để dùng Math.Pow, sau đó ép kiểu kết quả về decimal).
+• In kết quả so sánh chênh lệch giữa Lãi kép và Lãi đơn.
+Ví dụ minh họa Input / Output:
+--- INPUT ---
+Số tiền gửi: 100,000,000 VNĐ
+Lãi suất năm: 6.8 %/năm
+Thời gian gửi: 24 tháng
+--- OUTPUT ---
+BÀI TẬP LẬP TRÌNH C# | CHỦ ĐỀ: KIỂU DỮ LIỆU (DATA TYPES)
+Trang 11 / 14
+Tổng tiền lãi (Lãi đơn): 13,600,000 VNĐ
+Tổng tiền lãi (Lãi kép): 14,548,220 VNĐ
+Lợi nhuận chênh lệch: 948,220 VNĐ (Lãi kép tối ưu hơn)*/
+            Console.InputEncoding = Encoding.UTF8;
+            Console.OutputEncoding = Encoding.UTF8;
+
+            Console.Write("Văn bản gốc: ");
+            string origin = Console.ReadLine();
+            string result = "";
+            string decode = "";
+            Console.Write("Khóa dịch chuyển (Shift Key k): ");
+            int key = int.Parse(Console.ReadLine());
+            char newChar = 'a';
+            char decodeChar = 'a';
+
+            foreach (char c in origin)
+            {
+                if (char.IsLetter(c) == true)
+                {
+                    if (char.IsUpper(c) == true)
+                    {
+                        newChar = (char)((int)'A' + ((int)(c - 'A' + key) % 26));
+                        result += newChar;
+
+                    }
+                    else
+                    {
+                        newChar = (char)('a' + (c - 'a' + key) % 26);
+                        result += newChar;
+                    }
+
+                }
+                else
+                {
+                    result += c;
+                }
+
+
+            }
+
+            foreach (char c in result)
+            {
+                if (char.IsLetter(c) == true)
+                {
+                    if (char.IsUpper(c) == true)
+                    {
+                        int x = c - 'A';
+                        if (x < key )
+                        {
+                            decodeChar = (char)((int)'A' + (26 - key  + x));
+                            decode += decodeChar;
+                        }
+                        else
+                        {
+
+                            decodeChar = (char)((int)'A' - (key  - x));
+                            decode += decodeChar;
+                        }
+                    }
+                    else
+                    {
+                        int y = c - 'a';
+                        if (y < key )
+                        {
+                            decodeChar = (char)((int)'a' + (26 - key  + y));
+                            decode += decodeChar;
+                        }
+                        else
+                        {
+                            decodeChar = (char)((int)'a' - (key - y));
+                            decode += decodeChar;
+                        }
+                    }
+                }
+                else
+                {
+                    decode += c;
+                }
+
+
+            }
+
+            Console.WriteLine($"Văn bản Mã hóa: {result}");
+            Console.WriteLine($"Văn bản Giải mã: {decode}");
+            Console.ReadKey();
+        }
+
+        static void Bai13()
+        {
+            /*Tình huống thực tế: Hệ thống thẻ từ bãi đỗ xe thông minh tự động ghi nhận thời điểm xe vào và xe ra để
+tính chính xác phí gửi xe dựa trên loại phương tiện và thời lượng đỗ.
+Kiến thức trọng tâm: Kiểu DateTime, TimeSpan, enum (VehicleType), Math.Ceiling, decimal.
+Yêu cầu bài toán:
+• Tạo enum VehicleType { Motorbike, Car, Truck }.
+• Nhập loại xe, thời gian xe vào (CheckIn) và thời gian xe ra (CheckOut) dạng 'yyyy-MM-dd HH:mm'.
+• Tính thời gian đỗ TotalHours = (CheckOut - CheckIn).TotalHours. Làm tròn lên số giờ nguyên bằng
+Math.Ceiling.
+• Quy tắc tính giá:
+• + Motorbike: 5,000 VNĐ cho 2 giờ đầu; Mỗi giờ tiếp theo +2,000 VNĐ/giờ.
+• + Car: 20,000 VNĐ cho 2 giờ đầu; Mỗi giờ tiếp theo +10,000 VNĐ/giờ.
+• + Truck: 50,000 VNĐ cho 2 giờ đầu; Mỗi giờ tiếp theo +25,000 VNĐ/giờ.
+• Phụ phí qua đêm: Nếu thời gian đỗ gửi qua thời điểm 00:00 đêm, cộng thêm phụ phí 30,000 VNĐ.
+• Xuất hóa đơn gửi xe chi tiết.
+Ví dụ minh họa Input / Output:
+--- INPUT ---
+Loại xe: Car (Ô tô)
+Giờ vào: 2026-08-21 08:15
+Giờ ra: 2026-08-21 13:40
+--- OUTPUT ---
+Tổng thời gian đỗ: 5.42 giờ -> Tính phí: 6 giờ
+Phí 2 giờ đầu: 20,000 VNĐ
+Phí 4 giờ tiếp theo: 40,000 VNĐ (10,000 x 4)
+TỔNG PHÍ ĐỖ XE: 60,000 VNĐ
+*/
+            Console.InputEncoding = Encoding.UTF8;
+            Console.OutputEncoding = Encoding.UTF8;
+
+            Console.Write("Loại xe ( Motorbike, Car, Truck): ");
+            string vehicle = Console.ReadLine();
+
+            Console.Write("Giờ vào (yyyy-MM-dd HH:mm): ");
+            string v = Console.ReadLine();
+            DateTime gioVao = DateTime.ParseExact(v, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
+
+
+            Console.Write("Giờ ra (yyyy-MM-dd HH:mm): ");
+            string r = Console.ReadLine();
+            DateTime gioRa = DateTime.ParseExact(r, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
+
+            TimeSpan span = gioRa - gioVao;
+            double hours = span.TotalHours;
+            double parkingHours = Math.Ceiling(hours);
+            DateTime tomorrow = new DateTime(gioRa.Year, gioRa.Month, gioRa.Day).AddDays(1);
+            int[] haiGioDau = { 5000, 20000, 50, 000 };
+            int[] sauHaiGio = { 2000, 10000, 25000 };
+
+            decimal phiHaiGio = 0;
+            decimal phiSauHaiGio = 0;
+            decimal phiQuaNgay = 0;
+            decimal tongPhi = 0;
+            int i = 0;
+            switch (vehicle)
+            {
+                case "Motorbike":
+                    phiHaiGio = haiGioDau[0];
+                    phiSauHaiGio = (decimal)((parkingHours - 2) * sauHaiGio[0]);
+
+                    if (gioRa >= tomorrow)
+                    {
+                        phiQuaNgay = 30000;
+                    }
+                    tongPhi = phiHaiGio + phiSauHaiGio + phiQuaNgay;
+                    break;
+                case "Car":
+                    i = 1;
+                    phiHaiGio = haiGioDau[1];
+                    phiSauHaiGio = (decimal)((parkingHours - 2) * sauHaiGio[1]);
+                    if (gioRa >= tomorrow)
+                    {
+                        phiQuaNgay = 30000;
+                    }
+                    tongPhi = phiHaiGio + phiSauHaiGio + phiQuaNgay;
+                    break;
+                case "Truck":
+                    i = 2;
+                    phiHaiGio = haiGioDau[2];
+                    phiSauHaiGio = (decimal)((parkingHours - 2) * sauHaiGio[2]);
+                    if (gioRa >= tomorrow)
+                    {
+                        phiQuaNgay = 30000;
+                    }
+                    tongPhi = phiHaiGio + phiSauHaiGio + phiQuaNgay;
+                    break;
+            }
+            Console.WriteLine($"Tổng thời gian đỗ: {hours:N2} giờ -> Tính phí: {parkingHours} giờ");
+            Console.WriteLine($"Phí 2 giờ đầu: {phiHaiGio} VNĐ");
+            Console.WriteLine($"Phí {parkingHours - 2} tiếp theo : {phiSauHaiGio} VNĐ ({sauHaiGio[i]} x {parkingHours - 2})");
+            Console.WriteLine($"Phụ phí qua đêm: {phiQuaNgay} VNĐ");
+            Console.WriteLine($"TỔNG PHÍ ĐỖ XE: {tongPhi} VNĐ");
+
+
+            Console.ReadKey();
+        }
+
+
+
+
+        //Bài 14 chưa hiểu phép tính trong check;
+        static void Bai14()
+        {/*Tình huống thực tế: Trong các ứng dụng nhận dữ liệu từ người dùng hoặc file ngoại vi, dữ liệu nhập vào có
+thể không phải là số hợp lệ hoặc vượt quá khả năng lưu trữ của kiểu dữ liệu. Cần xử lý an toàn.
+Kiến thức trọng tâm: Kiểu int.TryParse, long.TryParse, byte, short, int, long, khối checked { } và
+OverflowException.
+Yêu cầu bài toán:
+• Mời người dùng nhập vào một chuỗi bất kỳ từ bàn phím.
+BÀI TẬP LẬP TRÌNH C# | CHỦ ĐỀ: KIỂU DỮ LIỆU (DATA TYPES)
+Trang 13 / 14
+• Sử dụng int.TryParse để kiểm tra xem chuỗi có phải là một số nguyên hợp lệ hay không. Nếu không, thông
+báo lỗi và yêu cầu nhập lại.
+• Nếu hợp lệ, hãy kiểm tra xem giá trị đó có thể lưu trữ vừa trong kiểu dữ liệu nhỏ hơn như byte (0-255)
+hoặc short (-32,768 đến 32,767) hay không.
+• Thực hiện tính Tổng các chữ số cấu thành nên số nguyên đó.
+• Thực hiện đoạn mã thử nghiệm tính tích lũy lũy thừa/nhân số đó trong khối checked { ... } để bắt ngoại lệ
+OverflowException nếu xảy ra tràn số trong C#.
+Ví dụ minh họa Input / Output:
+--- INPUT ---
+Nhập chuỗi số: 250
+--- OUTPUT ---
+Kiểm tra Parse: Thành công! Giá trị int = 250
+Phù hợp kiểu byte: CÓ (Vừa vặn trong dải 0-255)
+Tổng các chữ số: 2 + 5 + 0 = 7
+Kiểm tra Tràn số: An toàn trong phạm vi int32.
+*/
+            Console.InputEncoding = Encoding.UTF8;
+            Console.OutputEncoding = Encoding.UTF8;
+
+
+            bool kq = false;
+            string chuoi = "";
+            int tong = 0;
+
+            string kl = "Tổng các chữ số: ";
+            do
+            {
+                Console.Write("Nhập chuỗi số: ");
+                string chuoiSo = Console.ReadLine();
+                if (int.TryParse(chuoiSo, out int result) == false)
+                {
+                    Console.WriteLine("Lỗi - Yêu cầu nhập lại");
+                }
+                else
+                {
+                    chuoi = chuoiSo;
+
+                    kq = true;
+                    Console.WriteLine($"Kiểm tra Parse: Thành công! Giá trị int = {chuoi}");
+                }
+            } while (kq == false);
+
+            if (byte.TryParse(chuoi, out byte by) == true) { Console.WriteLine("Phù hợp kiểu byte: CÓ (Vừa vặn trong dải 0-255)"); }
+            else { Console.WriteLine("Phù hợp kiểu byte: Không thể lưu trữ trong byte"); }
+
+            if (byte.TryParse(chuoi, out byte f) == false)
+            {
+                if (short.TryParse(chuoi, out short shrt) == true) { Console.WriteLine("Phù hợp kiểu short: CÓ (Vừa vặn trong dải (-32,768 - 32,767)"); }
+                else { Console.WriteLine("Phù hợp kiểu short: Không thể lưu trữ trong short"); }
+            }
+            for (int c = 0; c < chuoi.Length; c++)
+            {
+                tong += chuoi[c] - '0';
+
+                if (c == chuoi.Length - 1)
+                {
+                    kl += $"{chuoi[c]} = ";
+                }
+                else
+                {
+                    kl += $"{chuoi[c]} + ";
+                }
+            }
+            kl += $"{tong}";
+
+            Console.WriteLine(kl);
+
+            int tich = 1;
+            int so = int.Parse(chuoi);
+            try
+            {
+                checked
+                {
+                    for (int j = 1; j <= so; j++)
+                    {
+                        tich *= j;
+                        Console.WriteLine("Kiểm tra Tràn số: An toàn trong phạm vi int32.");
+                    }
+                }
+            }
+
+
+
+            catch (OverflowException)
+            {
+                Console.WriteLine("Kiểm tra Tràn số: Tràn số trong phạm vi int32.");
+
+            }
+            Console.WriteLine(tich);
+            Console.ReadKey();
+        }
+
 
     }
 }

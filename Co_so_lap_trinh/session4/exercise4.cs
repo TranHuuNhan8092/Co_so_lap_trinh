@@ -7,7 +7,7 @@ namespace Co_so_lap_trinh.session4
 {
     internal class exercise4
     {
-        public static void Main(string[] args)
+        public static void Mainsess4(string[] args)
         {
             Console.WriteLine("Nhap he so a: ");
             float a = float.Parse(Console.ReadLine());
