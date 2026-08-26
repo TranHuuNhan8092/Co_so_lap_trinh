@@ -8,16 +8,18 @@ namespace Co_so_lap_trinh.session4
     {
         public static void Main(string[] args)
         {
+            Bai1_bt3();
             
         }
         static void Bai1_bt3()
         {
+            Console.Write("Nhap he so a: ");
             float a = float.Parse(Console.ReadLine());
 
-            Console.WriteLine("Nhap he so b: ");
+            Console.Write("Nhap he so b: ");
             float b = float.Parse(Console.ReadLine());
 
-            Console.WriteLine("Nhap he so c: ");
+            Console.Write("Nhap he so c: ");
             float c = float.Parse(Console.ReadLine());
 
 
@@ -37,12 +39,15 @@ namespace Co_so_lap_trinh.session4
             else
             {
                 float delta = (float)Math.Pow(b, 2) - 4 * a * c;
-                if (delta < 0) { Console.WriteLine($"Delta ={delta} < 0. Phuong trinh vo nghiem"); }
-                else if (delta == 0) { Console.WriteLine($"Delta ={delta} = 0.Nghiem duy nhat: {-b / (2 * a)}"); }
+                if (delta < 0) {
+                    Console.WriteLine($"Delta ={delta}.");
+                     Console.WriteLine("Delta < 0. Phuong trinh vo nghiem");   }
+                else if (delta == 0) { Console.WriteLine($"Delta ={delta} .Nghiem duy nhat: {-b / (2 * a)}"); }
                 else
                 {
                     float sqrtDt = (float)Math.Sqrt(delta);
-                    Console.WriteLine($"Delta ={delta} > 0.Phuong trinh co 2 nghiem: ");
+                    Console.WriteLine($"Delta ={delta}");
+                    Console.WriteLine("Delta > 0. Phương trình có 2 nghiệm.");
                     Console.WriteLine($"x1= {(-b + sqrtDt) / (2 * a)}");
                     Console.WriteLine($"x2= {(-b - sqrtDt) / (2 * a)}");
                 }
