@@ -6,7 +6,7 @@ namespace cslt_session3
 {
     internal class exercise3
     {
-        public static void MainCu(string[] args)
+        public static void Main_ex2(string[] args)
         {
             /*The Celsius scale is centigrade, 100 divisions separate the freezing point
 from the boiling point of water. On the Fahrenheit scale of Anglo-Saxons,

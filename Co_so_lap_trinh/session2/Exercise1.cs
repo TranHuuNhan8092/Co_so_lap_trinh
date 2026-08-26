@@ -9,7 +9,7 @@ namespace sess2
 {
     internal class exersise1
     {
-        public static void Main2(string[] args)
+        public static void Main_ex1(string[] args)
         {
             //            1.to Add / Sum Two Numbers.
 
