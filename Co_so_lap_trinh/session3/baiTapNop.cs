@@ -12,12 +12,12 @@ namespace Co_so_lap_trinh.session3
     internal class baiTapNop
     {
       
-        public static void MainHW(string[] args)
+        public static void Main(string[] args)
         {
             Console.InputEncoding = Encoding.UTF8;
             Console.OutputEncoding = Encoding.UTF8;
 
-
+            Bai3();
         }
     
 
@@ -221,12 +221,12 @@ Số tiền USD nhận được: 391.73 USD*/
 
                 case 3:
                     tenNgoaiTe = "JPY";
-                    soTienNgoaiTe = soTienTinhDoi / tyGiaCoDinh[3];
+                    soTienNgoaiTe = soTienTinhDoi / tyGiaCoDinh[2];
                     break;
 
                 case 4:
                     tenNgoaiTe = "GBP";
-                    soTienNgoaiTe = soTienTinhDoi / tyGiaCoDinh[4];
+                    soTienNgoaiTe = soTienTinhDoi / tyGiaCoDinh[3];
                     break;
             }
             Console.WriteLine($"Phí dịch vụ (0.5%): {phiDichVu:N0} VNĐ");

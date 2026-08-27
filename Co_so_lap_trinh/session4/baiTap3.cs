@@ -6,7 +6,7 @@ namespace Co_so_lap_trinh.session4
 {
     internal class baiTap3
     {
-        public static void Main(string[] args)
+        public static void MainBT3(string[] args)
         {
             Bai1_bt3();
             
