@@ -12,11 +12,12 @@ namespace Co_so_lap_trinh.session3
     internal class baiTapNop
     {
       
-        public static void MainHW(string[] args)
+        public static void MainBT(string[] args)
         {
             Console.InputEncoding = Encoding.UTF8;
             Console.OutputEncoding = Encoding.UTF8;
 
+            Bai4();
             
         }
     

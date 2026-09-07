@@ -8,7 +8,7 @@ namespace Co_so_lap_trinh.session4
 {
     internal class exercise4
     {
-        public static void Main_ex4(string[] args)
+        public static void Main(string[] args)
         {
             
             Console.ReadKey();
@@ -86,6 +86,99 @@ sum. 1 + 1/2 + 1/3 + 1/4 + 1/5 ... 1/n terms
         }
 
 
+        static void Bai5_4() 
+        {
+            Console.Write("Chon tam giac(1/2/3): ");
+            int n= int.Parse(Console.ReadLine());
+            switch (n)
+            {
+                case 1:
+                    triangle1();
+                    break;
+                case 2:
+                    triangle2();
+                    break;
+                case 3:
+                    triangle3();
+                    break;
+
+            }
+           
+        }
+        static void triangle1()
+        {
+            Console.Write("Nhap canh tam giac: ");
+            int a = int.Parse(Console.ReadLine());
+            for (int i=1; i<=a; i++)
+            {
+                for (int j = 1; j <= i; j++)
+                {
+                    Console.Write(j);
+                }
+                Console.WriteLine();
+            }
+        }
+
+        static void triangle2() 
+        {
+            Console.Write("Nhap canh tam giac: ");
+            int a = int.Parse(Console.ReadLine());
+            int k = 1;
+            for (int i=0; i<a; i++)
+            {
+                for (int j=0; j <= i; j++)
+                {
+                    if (j != i) { Console.Write(k + " "); }
+                    else { Console.Write(k); }
+                    k++;
+                    
+                }
+                Console.WriteLine();
+            }
+
+        }
+
+        static void triangle3()
+        {
+            Console.Write("Nhap canh tam giac: ");
+            int a = int.Parse(Console.ReadLine());
+            int k = 1;
+            for (int i=1; i <= a; i++)
+            {
+                Console.Write(new string(' ',(a-i)));
+                for (int j = 0; j < i; j++)
+                {
+                    Console.Write($"{k} " ); 
+                    
+                    k++;
+
+                }
+                Console.WriteLine();
+            }
+
+        }
+
+
+        static void Bai7_4()
+        {
+            Console.Write("Nhap so: ");
+            int n = int.Parse(Console.ReadLine());
+            int sum = 1;
+            for (int i=2; i<= Math.Sqrt((double)n); i++)
+            {
+                
+                if (n%i == 0)
+                {
+                    if (i != Math.Sqrt((double)n)) { sum = sum + i + (n / i); }
+                    else { sum = sum + i; }
+                }
+            }
+           
+            if (n== sum) { Console.WriteLine("Perfect number"); }
+            else { Console.WriteLine("Not a perfect number"); }
+
+            
+        }
 
         static void Bai8_4() {
             /*Write a program to determine whether a given number is prime or not.*/

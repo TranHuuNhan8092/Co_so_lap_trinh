@@ -100,5 +100,7 @@ is a vowel, a digit, or any other symbol*/
                 ra == '6' || ra == '7' || ra == '8' || ra == '9') { Console.WriteLine("Number"); }
             else { Console.WriteLine("Other symbol"); }
         }
+
+
     }
 }
