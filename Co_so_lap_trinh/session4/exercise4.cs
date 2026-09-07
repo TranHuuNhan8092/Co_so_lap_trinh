@@ -10,7 +10,7 @@ namespace Co_so_lap_trinh.session4
     {
         public static void Main(string[] args)
         {
-            
+            Bai8_4();
             Console.ReadKey();
 
         }
@@ -161,8 +161,19 @@ sum. 1 + 1/2 + 1/3 + 1/4 + 1/5 ... 1/n terms
 
         static void Bai7_4()
         {
-            Console.Write("Nhap so: ");
-            int n = int.Parse(Console.ReadLine());
+            Console.Write("Nhap range duoi: ");
+            int a= int.Parse(Console.ReadLine());
+            Console.Write("Nhap range tren: ");
+            int b= int.Parse(Console.ReadLine());
+
+            Console.WriteLine($"So hoan hoan trong khoang [{a};{b}] la: ");
+            for (int i=a; i<=b; i++)
+            { perfectNum(i); }
+        }
+        static void perfectNum(int n)
+        {
+            
+           
             int sum = 1;
             for (int i=2; i<= Math.Sqrt((double)n); i++)
             {
@@ -174,27 +185,35 @@ sum. 1 + 1/2 + 1/3 + 1/4 + 1/5 ... 1/n terms
                 }
             }
            
-            if (n== sum) { Console.WriteLine("Perfect number"); }
-            else { Console.WriteLine("Not a perfect number"); }
+            if (n== sum && n !=1) { Console.WriteLine($"{n}"); }
+            
 
             
         }
 
         static void Bai8_4() {
             /*Write a program to determine whether a given number is prime or not.*/
-            Console.Write(" Nhap so: ");
+            Console.Write("Nhap so: ");
             int n = int.Parse(Console.ReadLine());
             int uoc = 0;
 
+            if (n == 1) { Console.WriteLine("Not prime number"); }
+            else if (n == 2) { Console.WriteLine("Prime number"); }
+
             for (int i = 2; i <= Math.Sqrt(n); i++)
             {
-                if (n % i == 0) { uoc++; }
+                
+                if (n % i == 0) { 
+                    Console.WriteLine("Not prime number");
+                    uoc++;
+                    break;
+                }
             }
 
             if (uoc == 0) { Console.WriteLine("Prime number"); }
-            else { Console.WriteLine("Not prime number"); }
+           
 
-            Console.ReadKey();
+            
         }
 
         static void ptbh() {
