@@ -5,13 +5,13 @@ using System.Text;
 
 namespace Co_so_lap_trinh.session6
 {
-    internal class exercisese
+    internal class exercise6
     {
         public static void Main(string[] args) 
         {
             Console.Write("Input: ");
-            string s= Console.ReadLine();
-            ex_6_6(s);
+            string n = Console.ReadLine();
+            ex_6_6(n);
         }
 
 
@@ -26,7 +26,7 @@ namespace Co_so_lap_trinh.session6
         {
             int s = 1;
             for (int i = 2; i <= n; i++) { s = s * i; }
-            Console.WriteLine($"{n}!={s}");
+            Console.WriteLine($"The factorial of {n} is {s}");
         }
         static void ex_6_3(int n) 
         { 
@@ -136,23 +136,24 @@ namespace Co_so_lap_trinh.session6
 
         static bool pangramStringCheck(string s)
         {
-            bool check = true;
+            
              s = s.ToLower().Replace(" ","");
-            bool[] bangChuCai = new bool[26];
+           bool[] bangChuCai = new bool[26];
             for (int i=0; i< s.Length; i++)
             {
                 bangChuCai[s[i] - 'a'] = true;
             }
             for (int i = 0; i < 26; i++)
             {
-                if (!bangChuCai[i])
+                if (!bangChuCai[i] )
                 {
-                    check = false;
+                    
+                    return false;
                     break;
                 }
             }
 
-            return check;
+            return true;
         }
     }
 }
