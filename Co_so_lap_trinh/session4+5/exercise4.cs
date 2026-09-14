@@ -8,7 +8,7 @@ namespace Co_so_lap_trinh.session4
 {
     internal class exercise4
     {
-        public static void Main(string[] args)
+        public static void Mainex4(string[] args)
         {
             Bai8_4();
             Console.ReadKey();
