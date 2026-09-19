@@ -7,7 +7,7 @@ namespace Co_so_lap_trinh.session6
 {
     internal class exercise6
     {
-        public static void Main(string[] args) 
+        public static void Mainsess6(string[] args) 
         {
             Console.Write("Input: ");
             string n = Console.ReadLine();
