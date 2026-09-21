@@ -11,9 +11,13 @@ namespace Co_so_lap_trinh.session6
         {
             Console.Write("Input n: ");
             string n = Console.ReadLine();
+           
             
             
         }
+
+      
+
 
 
         /*Bài 1: Yêu cầu: Viết hàm `int TinhTong(int a, int b)` nhận vào hai số nguyên và trả về tổng của chúng.*/
@@ -211,9 +215,40 @@ namespace Co_so_lap_trinh.session6
         /*Bài 15: Viết hàm `void SapXepMang(int[] arr)` sắp xếp và in ra mảng tăng dần.*/
         static void SapXepMang(int[] arr)
         {
-            Array.Sort(arr);
-            Console.WriteLine(string.Join(' ', arr));
+            Console.WriteLine(string.Join(' ', QuickSort(arr, 0, arr.Length - 1)));
         }
+
+        static int[] QuickSort(int[] arr, int left, int right)
+        {
+
+            if (left >= right) { return arr; }
+
+
+            int pivot = arr[left];
+            int i = left;
+            for (int j = left + 1; j <= right; j++)
+            {
+                if (arr[j] <= pivot)
+                {
+                    i++;
+                    int temp = arr[j];
+                    arr[j] = arr[i];
+                    arr[i] = temp;
+                }
+            }
+
+
+            arr[left] = arr[i];
+            arr[i] = pivot;
+
+
+            QuickSort(arr, left, i - 1);
+            QuickSort(arr, i + 1, right);
+
+
+            return arr;
+        }
+
 
 
         /*Bài 16: Viết hàm `string XoaTrungLap(string s)` trả về chuỗi với các ký tự xuất hiện lần đầu tiên được giữ lại.*/
