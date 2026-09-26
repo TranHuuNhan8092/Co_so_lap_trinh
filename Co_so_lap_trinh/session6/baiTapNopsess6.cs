@@ -7,12 +7,12 @@ namespace Co_so_lap_trinh.session6
 {
     internal class baiTapNopsess6
     {
-        public static void Main(string[] args)
+        public static void Mainbt6(string[] args)
         {
-            Console.Write("Input n: ");
-            string n = Console.ReadLine();
-           
-            
+            //Console.Write("Input n: ");
+            //string n = Console.ReadLine();
+            int[] arr = { 10,45,2,3,7,6,9,10};
+            SapXepMang(arr);
             
         }
 
