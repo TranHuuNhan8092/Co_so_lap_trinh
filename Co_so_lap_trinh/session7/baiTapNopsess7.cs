@@ -17,11 +17,13 @@ namespace Co_so_lap_trinh.session7
             int i=int.Parse(Console.ReadLine());
 
             int[,] arr = new int[row,col];
-         
+           
             
 
         }
 
+
+        //Create a random integer values array
         static int[] ranArr(int[] arr)
         {
             Random rdm = new Random();
@@ -32,6 +34,8 @@ namespace Co_so_lap_trinh.session7
             return arr;
         }
 
+
+        //calculate the average value of array elements.
         static int avg(int[] arr)
         {
             int avg = 0;
@@ -44,6 +48,7 @@ namespace Co_so_lap_trinh.session7
 
         }
 
+        //to test if an array contains a specific value.
         static bool findSpecific(int[] arr, int spe)
         {
             for (int i = 0; i < arr.Length; i++)
@@ -52,6 +57,7 @@ namespace Co_so_lap_trinh.session7
             return false;
         }
 
+        //to find the index of an array element
         static int returnIndex(int[] arr, int spe)
         {
             for (int i = 0; i < arr.Length; i++)
@@ -60,6 +66,7 @@ namespace Co_so_lap_trinh.session7
             } { return -1; }
         }
 
+        //to remove a specific element from an array.
         static string[] removeSpec(int[] arr, int spe)
             {
             string[] mang = new string[arr.Length];
@@ -69,6 +76,7 @@ namespace Co_so_lap_trinh.session7
             }
             return mang;}
 
+        //to find the maximum and minimum value of an array.
         static int findMax(int[] arr)
         {
             int max = arr[0];
@@ -90,6 +98,7 @@ namespace Co_so_lap_trinh.session7
 
         }
 
+        //to reverse an array of integer values.
         static int[] reverseArr(int[] arr)
         {
             for( int i=0; i< arr.Length/2; i++)
@@ -100,6 +109,8 @@ namespace Co_so_lap_trinh.session7
             }
             return arr;
         }
+
+        //to find duplicate values in an array of values.
         static void findDup(int[] arr)
         {
             
@@ -119,6 +130,7 @@ namespace Co_so_lap_trinh.session7
 
         }
 
+        //to remove duplicate elements from an array.
         static string[] removeDup(int[] arr)
         {
             string[] mang=new string[arr.Length];
@@ -150,7 +162,7 @@ namespace Co_so_lap_trinh.session7
 
         }
 
-
+        //requests 10 integers from the user 
         static int[] NhapMang(int[] arr)
         {
             for (int i = 0; i < 10; i++)
@@ -160,6 +172,8 @@ namespace Co_so_lap_trinh.session7
             }
             return arr;
         }
+
+        //the bubble sort algorithm
         static int[] bubbleSort(int[] arr) 
         { for (int i=0; i<arr.Length; i++)
             {
@@ -176,6 +190,15 @@ namespace Co_so_lap_trinh.session7
             return arr;
         }
 
+        //Request a sentence from the user,
+        static string NhapCau(string sen)
+        {
+            Console.Write("Input sen: ");
+            sen = Console.ReadLine();
+            return sen;
+
+        }
+        //then ask to enter a word. Search if the word appears in the phrase using the linear search algorithm.
         static bool checkWord(string sen, string word)
         {
             string[] arr = sen.Split(" ");
@@ -189,6 +212,8 @@ namespace Co_so_lap_trinh.session7
 
         }
 
+
+        //Create an integer matrix N x M
         static int[,] multiArr(int[,] arr)
         {
             for(int i=0; i < arr.GetLength(0); i++)
@@ -201,6 +226,8 @@ namespace Co_so_lap_trinh.session7
             }
             return arr;
         }
+
+        //Print the matrix.
         static void inMultiArr(int[,] arr)
         {
             for(int i =0; i< arr.GetLength(0); i++)
@@ -213,6 +240,7 @@ namespace Co_so_lap_trinh.session7
             }
         }
 
+        //Print the ith row/column. (i was prompted from user)
         static void printValue(int[,] arr, int i)
         {
             Console.Write($"{i}th row: ");
@@ -228,6 +256,8 @@ namespace Co_so_lap_trinh.session7
             }
         }
 
+
+        //Find the max value of the matrix
         static int maxValue(int[,] arr)
         {
             int max = arr[0, 0];
@@ -241,22 +271,7 @@ namespace Co_so_lap_trinh.session7
             return max;
         }
 
-        static void findMaxValue(int[,] arr, int i) 
-        {
-            int maxr = arr[i,0];
-            for (int j = 0; j < arr.GetLength(1); j++)
-            {
-                if (arr[i, j] >maxr) { maxr = arr[i,j];} 
-            }
-            Console.WriteLine($"Max value of {i}th row: {maxr}");
-            int maxc = arr[0,i];
-            for (int j = 0; j < arr.GetLength(0); j++)
-            {
-                if (arr[j, i] > maxc) { maxc = arr[j,i]; }
-            }
-            Console.WriteLine($"Max value of {i}th collum: {maxc}");
-        }
-
+        //Find the min value of ith row / col of the matrix.
         static void findMinValue(int[,] arr, int i)
         {
             int minr = arr[i,0];
@@ -273,6 +288,7 @@ namespace Co_so_lap_trinh.session7
             Console.WriteLine($"Min value of {i}th collum: {minc}");
         }
 
+        //Transpose the matrix
         static int[,] tranposeMatrix(int[,] arr)
         {
             for(int i=0; i< arr.GetLength(0); i++)
@@ -287,17 +303,26 @@ namespace Co_so_lap_trinh.session7
             return arr;
         }
 
+
+        //Print the main/secondary diagonal values of the matrix.(square maxtrix)
         static void printDiaValue(int[,] arr)
         {
-            Console.WriteLine("Phan tu nam tren duong cheo chinh: ");
-            for (int i=0; i < arr.GetLength(1); i++)
+            if (arr.GetLength(0) != arr.GetLength(1))
             {
-                Console.WriteLine($"\t({i},{i}): {arr[i,i]}");
+                Console.WriteLine("Not a square matrix");
             }
-            Console.WriteLine("Phan tu nam tren duong cheo phu: ");
-            for (int i = 0; i < arr.GetLength(1); i++)
+            else
             {
-                Console.WriteLine($"\t({i},{arr.GetLength(0)-1-i}): {arr[i, arr.GetLength(0) - 1 - i]}");
+                Console.WriteLine("Phan tu nam tren duong cheo chinh: ");
+                for (int i = 0; i < arr.GetLength(1); i++)
+                {
+                    Console.WriteLine($"\t({i},{i}): {arr[i, i]}");
+                }
+                Console.WriteLine("Phan tu nam tren duong cheo phu: ");
+                for (int i = 0; i < arr.GetLength(1); i++)
+                {
+                    Console.WriteLine($"\t({i},{arr.GetLength(0) - 1 - i}): {arr[i, arr.GetLength(0) - 1 - i]}");
+                }
             }
         }
     }
