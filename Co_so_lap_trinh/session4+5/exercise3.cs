@@ -96,7 +96,7 @@ is a vowel, a digit, or any other symbol*/
             char ra = char.Parse(Console.ReadLine());
             if (ra == 'a' || ra == 'e' || ra == 'i' || ra == 'u' || ra == 'o' ||
                 ra == 'A' || ra == 'E' || ra == 'I' || ra == 'U' || ra == 'O') { Console.WriteLine("Vowel"); }
-            else if (ra == '0' || ra == '2' || ra == '3' || ra == '4' || ra == '5' ||
+            else if (ra == '0' ||ra =='1'|| ra == '2' || ra == '3' || ra == '4' || ra == '5' ||
                 ra == '6' || ra == '7' || ra == '8' || ra == '9') { Console.WriteLine("Number"); }
             else { Console.WriteLine("Other symbol"); }
         }

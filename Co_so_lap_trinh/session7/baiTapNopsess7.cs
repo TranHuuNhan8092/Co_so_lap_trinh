@@ -7,7 +7,7 @@ namespace Co_so_lap_trinh.session7
 {
     internal class baiTapNopsess7
     {
-        public static void Main(string[] args)
+        public static void Main1(string[] args)
         {
             Console.Write("Input n: ");
             int row = int.Parse(Console.ReadLine());

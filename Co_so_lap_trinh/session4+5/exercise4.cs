@@ -197,19 +197,21 @@ sum. 1 + 1/2 + 1/3 + 1/4 + 1/5 ... 1/n terms
             int n = int.Parse(Console.ReadLine());
             int uoc = 0;
 
-            if (n == 1) { Console.WriteLine("Not prime number"); }
-            else if (n == 2) { Console.WriteLine("Prime number"); }
-
-            for (int i = 2; i <= Math.Sqrt(n); i++)
+            if (n <= 1) { Console.WriteLine("Not prime number"); }
+            else if (n <= 3) { Console.WriteLine("Prime number"); }
+            else
             {
-                
-                if (n % i == 0) { 
-                    Console.WriteLine("Not prime number");
-                    uoc++;
-                    break;
+                for (int i = 2; i <= Math.Sqrt(n); i++)
+                {
+
+                    if (n % i == 0)
+                    {
+                        Console.WriteLine("Not prime number");
+                        uoc++;
+                        break;
+                    }
                 }
             }
-
             if (uoc == 0) { Console.WriteLine("Prime number"); }
            
 
