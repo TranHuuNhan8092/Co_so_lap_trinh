@@ -10,7 +10,7 @@ namespace Co_so_lap_trinh.session_8
     {
         static void Main()
         {
-            
+          
         }
         
         //to input a string and print it.
@@ -57,6 +57,15 @@ namespace Co_so_lap_trinh.session_8
             }
             return arr;
            
+        }
+
+        static void outputCh(char[] arr)
+        {
+            foreach (char c in arr)
+            {
+                Console.WriteLine(c);
+            }
+
         }
 
         //to print individual characters of the string in reverse order.
