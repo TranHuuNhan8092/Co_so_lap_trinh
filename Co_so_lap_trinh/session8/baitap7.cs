@@ -10,8 +10,7 @@ namespace Co_so_lap_trinh.session_8
     {
         static void Main()
         {
-            string s = inputString();
-            outputCh(seperateString(s));
+           
         }
         
         //to input a string and print it.
