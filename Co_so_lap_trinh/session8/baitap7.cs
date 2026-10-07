@@ -8,7 +8,7 @@ namespace Co_so_lap_trinh.session_8
 {
     internal class baitap7
     {
-        static void Main()
+        static void Mainbt7()
         {
            
         }
@@ -71,9 +71,9 @@ namespace Co_so_lap_trinh.session_8
         //to print individual characters of the string in reverse order.
         static void printReverse(string s)
         {
-            char[] arr= seperateString(s);
-            for (int i = arr.Length - 1; i >= 0; i--) {
-                Console.WriteLine(arr[i]);
+            
+            for (int i = findLength(s)- 1; i >= 0; i--) {
+                Console.WriteLine(s[i]);
             }
         }
 
