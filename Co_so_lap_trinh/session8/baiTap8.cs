@@ -15,8 +15,7 @@ namespace Co_so_lap_trinh.session8
         static void Main()
         {
           
-            calStatistics( @"D:\Temp\copyBlank.txt");
-
+           
 
             
         }
